@@ -76,7 +76,7 @@ export class HardwareShopService {
         this.updateCartItems(this.getItems(this.categories));
         this.updateGridView.emit();
       }, error => {
-        console.error('[HardwareShopService] Error while loading items: ' + error.message);
+        throw error;
       });
   }
 

@@ -7,7 +7,7 @@ import { SettingsService } from '../settings/settings.service';
 import { FileService } from '../../../api/files/file.service';
 import { Path } from '../../../api/files/path';
 import { of } from 'rxjs';
-
+import {captureException} from '@sentry/browser';
 
 function escapeHtml(html) {
   return html
@@ -19,6 +19,7 @@ function escapeHtml(html) {
 }
 
 function reportError(error) {
+  captureException(error);
   console.warn(new Error(error.message));
 }
 

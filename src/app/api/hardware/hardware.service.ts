@@ -5,6 +5,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { Part, PartCategory } from './hardware-parts';
 import { DeviceHardware } from './device-hardware';
 import { HardwareList } from './hardware-list';
+import { captureException } from '@sentry/browser';
 
 @Injectable({
   providedIn: 'root'
@@ -80,6 +81,7 @@ export class HardwareService {
               hardware.case = hardware_element;
               break;
             default:
+              captureException(new Error('Unknown hardware part type: ' + hardware_type));
               console.warn('Unknown hardware part type: ' + hardware_type);
           }
         }
