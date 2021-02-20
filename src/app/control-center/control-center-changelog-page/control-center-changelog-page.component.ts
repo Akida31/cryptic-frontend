@@ -14,7 +14,7 @@ export class ControlCenterChangelogPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.httpClient.get('/assets/changelog.json').subscribe(changelog => {
+    this.httpClient.get('assets/changelog.json').subscribe(changelog => {
       this.changelog = changelog as Changelog;
     });
   }
